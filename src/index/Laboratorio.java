@@ -1,7 +1,11 @@
 package index;
 
 import java.text.DecimalFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import poi.ExportToWord;
+import poi.Paciente;
 
 /**
  * @author delamora
@@ -87,10 +91,8 @@ public class Laboratorio extends javax.swing.JDialog {
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
         txtIMC = new javax.swing.JTextField();
         txtCC = new javax.swing.JTextField();
-        txtTER = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -150,6 +152,7 @@ public class Laboratorio extends javax.swing.JDialog {
         txtPorcentajeMusculoRCD = new javax.swing.JTextField();
         txtPorcentajeOseoRCD = new javax.swing.JTextField();
         txtPorcentajeResidualRCD = new javax.swing.JTextField();
+        btnExportarWord = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1200, 600));
@@ -176,7 +179,7 @@ public class Laboratorio extends javax.swing.JDialog {
         jLabel3.setText("Actividad Física");
 
         cmbActividadFisica.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cmbActividadFisica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Sedentario" }));
+        cmbActividadFisica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Ballet", "Besibol o Softbol", "Basquetbol", "Fisicocontructivismo", "Ciclismo", "Gimnasia", "Futbol", "Natación", "Tenis", "Velocidad", "Medio fondo", "Fondo", "Triatlón", "Voleibol", "Lucha" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -571,10 +574,6 @@ public class Laboratorio extends javax.swing.JDialog {
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("CC cm");
 
-        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("TER mm");
-
         txtIMC.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txtIMC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtIMC.addActionListener(new java.awt.event.ActionListener() {
@@ -588,14 +587,6 @@ public class Laboratorio extends javax.swing.JDialog {
         txtCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCCActionPerformed(evt);
-            }
-        });
-
-        txtTER.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txtTER.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTER.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTERActionPerformed(evt);
             }
         });
 
@@ -734,20 +725,6 @@ public class Laboratorio extends javax.swing.JDialog {
                 .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(panelMedicionesLayout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(txtIMC))
-                .addGap(250, 250, 250)
-                .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(txtCC))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTER, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelMedicionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -796,26 +773,37 @@ public class Laboratorio extends javax.swing.JDialog {
                     .addComponent(txtICC))
                 .addGap(199, 199, 199))
             .addGroup(panelMedicionesLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
                 .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSloan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnSloanBurtBlyth, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnThorlandJohnson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDurninWomersley, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(80, 80, 80)
-                .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnPolloclkLaughridge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnJacksonPollock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLewisHaskell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnKatchMcArdle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(80, 80, 80)
-                .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnWilmoreBehnke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnWithersCraig, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                    .addComponent(btnJacksonAndPollock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(65, 65, 65))
+                    .addGroup(panelMedicionesLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSloan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnSloanBurtBlyth, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnThorlandJohnson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnDurninWomersley, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(80, 80, 80)
+                        .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnPolloclkLaughridge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnJacksonPollock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLewisHaskell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnKatchMcArdle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(80, 80, 80)
+                        .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnWilmoreBehnke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnWithersCraig, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                            .addComponent(btnJacksonAndPollock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panelMedicionesLayout.createSequentialGroup()
+                        .addGap(369, 369, 369)
+                        .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtIMC, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(250, 250, 250)
+                        .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCC, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(65, 70, Short.MAX_VALUE))
         );
         panelMedicionesLayout.setVerticalGroup(
             panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -825,14 +813,11 @@ public class Laboratorio extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtIMC)
-                    .addGroup(panelMedicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCC)
-                        .addComponent(txtTER, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtIMC, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(txtCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel34)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -989,6 +974,14 @@ public class Laboratorio extends javax.swing.JDialog {
 
         txtPorcentajeResidualRCD.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
+        btnExportarWord.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnExportarWord.setLabel("Exportar a Word");
+        btnExportarWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarWordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelComposicionCorporalLayout = new javax.swing.GroupLayout(panelComposicionCorporal);
         panelComposicionCorporal.setLayout(panelComposicionCorporalLayout);
         panelComposicionCorporalLayout.setHorizontalGroup(
@@ -1055,6 +1048,10 @@ public class Laboratorio extends javax.swing.JDialog {
                         .addGap(61, 61, 61)
                         .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelComposicionCorporalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExportarWord, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         panelComposicionCorporalLayout.setVerticalGroup(
             panelComposicionCorporalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1120,7 +1117,9 @@ public class Laboratorio extends javax.swing.JDialog {
                         .addGroup(panelComposicionCorporalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPorcentajeResidualRCD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addComponent(btnExportarWord, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         tpDatosPersonales.addTab("Composición corporal", panelComposicionCorporal);
@@ -1168,7 +1167,6 @@ public class Laboratorio extends javax.swing.JDialog {
         } else {
             txtIMCActionPerformed(null);
             txtCCActionPerformed(null);
-            txtTERActionPerformed(null);
             txtEndomorfiaActionPerformed(null);
             txtMesomorfiaActionPerformed(null);
             txtEctomorfiaActionPerformed(null);
@@ -1218,33 +1216,6 @@ public class Laboratorio extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtCCActionPerformed
 
-    private void txtTERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTERActionPerformed
-        double subescapular = 0;
-        double crestaIliaca = 0;
-        double triceps = 0;
-        double biceps = 0;
-        double pantorrillaMedial = 0;
-        
-        txtTER.setEditable(false);
-       
-        try{
-            subescapular = Double.parseDouble(txtSubescapular.getText());
-            crestaIliaca = Double.parseDouble(txtCrestaIliaca.getText());
-            triceps = Double.parseDouble(txtTriceps.getText());
-            biceps = Double.parseDouble(txtBiceps.getText());
-            pantorrillaMedial = Double.parseDouble(txtPantorrillaMedial.getText());
-        } catch (NumberFormatException nfe){
-            JOptionPane.showMessageDialog(rootPane, "El dato: " + nfe.getMessage().substring(18) + " NO es un dato válido");
-        }
-        if(subescapular > 0 && crestaIliaca > 0 && triceps > 0 && biceps > 0 && pantorrillaMedial > 0){
-            DecimalFormat df = new DecimalFormat("#.##");
-            txtTER.setText(String.valueOf(df.format((subescapular + crestaIliaca) / (triceps + biceps + pantorrillaMedial))));
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "EL diámetro de los siguientes parámetros deben ser mayores a cero: "
-                    + "Subescapular, Cresta Iliaca, Triceps, Biceps y Pantorrilla Medial");
-        }
-    }//GEN-LAST:event_txtTERActionPerformed
-
     private void txtEndomorfiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEndomorfiaActionPerformed
         double triceps = 0;
         double subescapular = 0;
@@ -1264,7 +1235,7 @@ public class Laboratorio extends javax.swing.JDialog {
         }
         if(triceps > 0 && subescapular > 0 && supraespinal > 0 && estatura > 0){
             endomorfiaCorregida = (triceps + subescapular + supraespinal)*(170.18 / estatura);
-            DecimalFormat df = new DecimalFormat("#.##");
+            DecimalFormat df = new DecimalFormat("#.#");
             txtEndomorfia.setText(String.valueOf(df.format(-0.7182 + 0.1451 * endomorfiaCorregida - 0.00068 * 
                     (Math.pow(endomorfiaCorregida, 2)) + 0.0000014 * (Math.pow(endomorfiaCorregida, 3)))));
         } else {
@@ -1301,7 +1272,7 @@ public class Laboratorio extends javax.swing.JDialog {
         if(brazoContraido > 0 && triceps > 0 && pantorrilla > 0 && pantorrillaMedial > 0 && humero > 0 && femur > 0 && estatura > 0){
             brazoCorregido = brazoContraido - triceps/10;
             pantorrillaCorregida = pantorrilla - pantorrillaMedial/10;
-            DecimalFormat df = new DecimalFormat("#.##");
+            DecimalFormat df = new DecimalFormat("#.#");
             txtMesomorfia.setText(String.valueOf(df.format(0.858 * humero + 0.601 * femur + 0.188 * brazoCorregido + 0.161 * 
                     pantorrillaCorregida - estatura * 0.131 + 4.5)));
         } else {
@@ -1326,7 +1297,7 @@ public class Laboratorio extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "El dato: " + nfe.getMessage().substring(18) + " NO es un dato válido");
         }
         
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("#.#");
         
         if(estatura > 0 && peso > 0){
             indicePonderal = estatura / Math.cbrt(peso);
@@ -1455,6 +1426,8 @@ public class Laboratorio extends javax.swing.JDialog {
         double pectoral = 0;
         double estiloideo = 0;
         double femur = 0;
+        String porcentajeGrasaRCD = "";
+        int actividadFisica = 0;
         
         int botonesSeleccionados = 0;
         
@@ -1482,6 +1455,8 @@ public class Laboratorio extends javax.swing.JDialog {
         txtPorcentajeOseoReal.setEditable(false);
         txtPorcentajeResidualReal.setEditable(false);
         
+        //txtPorcentajeGrasaRCD.setEditable(false);
+        
         try{
             peso = Double.parseDouble(txtPeso.getText());
             estatura = Double.parseDouble(txtEstatura.getText());
@@ -1501,6 +1476,141 @@ public class Laboratorio extends javax.swing.JDialog {
             abdomen = Double.parseDouble(txtAbdomen.getText());
             supraespinal = Double.parseDouble(txtSupraespinal.getText());
         } catch (NumberFormatException nfe){}
+        
+        try{
+            actividadFisica = cmbActividadFisica.getSelectedIndex();
+        } catch (Exception e){}
+        
+        switch (actividadFisica) {
+            case 0:
+                if(cbFemenino.isSelected() && (edad >= 20 && edad <= 29)) {
+                    porcentajeGrasaRCD = "29-34";
+                }
+                if(cbMasculino.isSelected() && (edad >= 20 && edad <= 29)) {
+                    porcentajeGrasaRCD = "21-26";
+                }
+            break;
+            case 1:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "13-20";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "8-14";
+                }
+            break;
+            case 2:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "13-20";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "8-14";
+                }
+            break;
+            case 3:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "20-27";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "7-11";
+                }
+            break;
+            case 4:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "9-13";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "6-9";
+                }
+            break;
+            case 5:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "15";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "8-10";
+                }
+            break;
+            case 6:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "10-17";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "5-10";
+                }
+            break;
+            case 7:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "10";
+                }
+            break;
+            case 8:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "14-24";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "9-12";
+                }
+            break;
+            case 9:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "20";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "15-16";
+                }
+            break;
+            case 10:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "11-19";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "8-9";
+                }
+            break;
+            case 11:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "10-14";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "7-12";
+                }
+            break;
+            case 12:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "10-19";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "6-13";
+                }
+            break;
+            case 13:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "7-17";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "5-11";
+                }
+            break;
+            case 14:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "16-25";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "11-12";
+                }
+            break;
+            case 15:
+                if(cbFemenino.isSelected()) {
+                    porcentajeGrasaRCD = "";
+                }
+                if(cbMasculino.isSelected()) {
+                    porcentajeGrasaRCD = "5-12";
+                }
+            break;                            
+        }
         
         if(btnDurninWomersley.isSelected()){
             botonesSeleccionados++;
@@ -1623,7 +1733,7 @@ public class Laboratorio extends javax.swing.JDialog {
         double kiloMusculo = (peso * porcentajeMusculo) / 100;
         double kiloResidual = (peso * porcentajeResidual)/100;
         
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("#.#");
         
         txtMasaMagra.setText(String.valueOf(df.format(masaMagra)));
         txtKgGrasa.setText(String.valueOf(df.format(kiloGrasa)));
@@ -1635,6 +1745,8 @@ public class Laboratorio extends javax.swing.JDialog {
         txtPorcentajeOseoReal.setText(String.valueOf(df.format(porcentajeOseo)));
         txtPorcentajeResidualReal.setText(String.valueOf(df.format(porcentajeResidual)));
         
+        txtPorcentajeGrasaRCD.setText(porcentajeGrasaRCD);
+        
     }//GEN-LAST:event_panelComposicionCorporalComponentShown
 
     private void txtComplexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComplexionActionPerformed
@@ -1644,7 +1756,7 @@ public class Laboratorio extends javax.swing.JDialog {
         if(cbMasculino.isSelected()){
             if(edad <= 24){
                 if (humero <= 6.7){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.7)&&(humero < 7.6)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1653,7 +1765,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if((edad >= 25)&&(edad <= 34)){
                 if (humero <= 6.8){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.8)&&(humero < 7.6)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1662,7 +1774,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if((edad >= 35)&&(edad <= 44)){
                 if (humero <= 6.7){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.7)&&(humero < 7.7)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1671,7 +1783,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if((edad >= 45)&&(edad <= 54)){
                 if (humero <= 6.9){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.9)&&(humero < 7.9)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1680,7 +1792,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if((edad >= 55)&&(edad <= 64)){
                 if (humero <= 6.9){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.9)&&(humero < 7.9)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1689,7 +1801,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if(edad >= 65){
                 if (humero <= 6.9){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.8)&&(humero < 7.8)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1699,7 +1811,7 @@ public class Laboratorio extends javax.swing.JDialog {
         } else {
             if(edad <= 24){
                 if (humero <= 5.8){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 5.8)&&(humero < 6.6)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1708,7 +1820,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if((edad >= 25)&&(edad <= 34)){
                 if (humero <= 5.8){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 5.8)&&(humero < 6.7)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1717,7 +1829,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if((edad >= 35)&&(edad <= 44)){
                 if (humero <= 6.0){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.0)&&(humero < 7.0)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1726,7 +1838,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if((edad >= 45)&&(edad <= 54)){
                 if (humero <= 6.0){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.0)&&(humero < 7.1)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1735,7 +1847,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if((edad >= 55)&&(edad <= 64)){
                 if (humero <= 6.1){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.1)&&(humero < 7.2)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1744,7 +1856,7 @@ public class Laboratorio extends javax.swing.JDialog {
             }
             if(edad >= 65){
                 if (humero <= 6.1){
-                    txtComplexion.setText("Pequeña");
+                    txtComplexion.setText("Chica");
                 } else if ((humero > 6.1)&&(humero < 7.0)){
                     txtComplexion.setText("Mediana");
                 } else {
@@ -1765,6 +1877,71 @@ public class Laboratorio extends javax.swing.JDialog {
         cbFemenino.setSelected(false);
         cbMasculino.setSelected(true);
     }//GEN-LAST:event_cbMasculinoMouseClicked
+
+    private void btnExportarWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarWordActionPerformed
+        // Generar la exportación de los datos
+        Paciente paciente = new Paciente();
+        paciente.setAbdomen(txtAbdomen.getText());
+        paciente.setAbdominal(txtAbdominal.getText());
+        paciente.setActividadFisica(cmbActividadFisica.getModel().getSelectedItem().toString());
+        paciente.setAxilar(txtAxilar.getText());
+        paciente.setBiceps(txtBiceps.getText());
+        paciente.setBrazoContraido(txtBrazoContraido.getText());
+        paciente.setBrazoRelajado(txtBrazoRelajado.getText());
+        paciente.setCadera(txtCadera.getText());
+        paciente.setCc(txtCC.getText());
+        paciente.setCintura(txtCintura.getText());
+        paciente.setClasificacion(txtClasificacion.getText());
+        paciente.setComplexion(txtComplexion.getText());
+        paciente.setCrestaIliaca(txtCrestaIliaca.getText());
+        paciente.setEctomorfia(txtEctomorfia.getText());
+        paciente.setEctomorfiaRCD(txtEctomorfiaRCD.getText());
+        paciente.setEdad(txtEdad.getText());
+        paciente.setEndomorfia(txtEndomorfia.getText());
+        paciente.setEndomorfiaRCD(txtEndomorfiaRCD.getText());
+        paciente.setEstatura(txtEstatura.getText());
+        paciente.setEstiloideo(txtEstiloideo.getText());
+        paciente.setFemur(txtFemur.getText());
+        paciente.setHumero(txtHumero.getText());
+        paciente.setIcc(txtICC.getText());
+        paciente.setImc(txtIMC.getText());
+        paciente.setKgGrasa(txtKgGrasa.getText());
+        paciente.setKgMusculo(txtKgMusculo.getText());
+        paciente.setKgOseo(txtKgOseo.getText());
+        paciente.setKgResidual(txtKgResidual.getText());
+        paciente.setMasaMagra(txtMasaMagra.getText());
+        paciente.setMesomorfia(txtMesomorfia.getText());
+        paciente.setMesomorfiaRCD(txtMesomorfiaRCD.getText());
+        paciente.setMusloFrontal(txtMusloFrontal.getText());
+        paciente.setNombre(txtNombre.getText());
+        paciente.setPantorrilla(txtPantorrilla.getText());
+        paciente.setPantorrillaMedial(txtPantorrillaMedial.getText());
+        paciente.setPectoral(txtPectoral.getText());
+        paciente.setPeso(txtPeso.getText());
+        paciente.setPorcentajeGrasaRCD(txtPorcentajeGrasaRCD.getText());
+        paciente.setPorcentajeGrasaReal(txtPorcentajeGrasaReal.getText());
+        paciente.setPorcentajeMusculoRCD(txtPorcentajeMusculoRCD.getText());
+        paciente.setPorcentajeMusculoReal(txtPorcentajeMusculoReal.getText());
+        paciente.setPorcentajeOseoRCD(txtPorcentajeOseoRCD.getText());
+        paciente.setPorcentajeOseoReal(txtPorcentajeOseoReal.getText());
+        paciente.setPorcentajeResidualRCD(txtPorcentajeResidualRCD.getText());
+        paciente.setPorcentajeResidualReal(txtPorcentajeResidualReal.getText());
+        paciente.setSexo(cbMasculino.isSelected());
+        paciente.setSubescapular(txtSubescapular.getText());
+        paciente.setSupraespinal(txtSupraespinal.getText());
+        paciente.setTriceps(txtTriceps.getText());
+        
+        try {
+            ExportToWord.exportation(paciente);
+            JOptionPane.showMessageDialog(rootPane, "Exportación a Word completada, presione Aceptar para ver su archivo");
+            Process p = Runtime.getRuntime().exec("explorer.exe C:\\Workspaces\\Kinansport");
+            p.waitFor();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, "Error en la exportación: " + ex.getMessage());
+            Logger.getLogger(Laboratorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnExportarWordActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1806,6 +1983,7 @@ public class Laboratorio extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnDurninWomersley;
+    private javax.swing.JButton btnExportarWord;
     private javax.swing.JToggleButton btnJacksonAndPollock;
     private javax.swing.JToggleButton btnJacksonPollock;
     private javax.swing.JToggleButton btnKatchMcArdle;
@@ -1846,7 +2024,6 @@ public class Laboratorio extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -1928,7 +2105,6 @@ public class Laboratorio extends javax.swing.JDialog {
     private javax.swing.JTextField txtPorcentajeResidualReal;
     private javax.swing.JTextField txtSubescapular;
     private javax.swing.JTextField txtSupraespinal;
-    private javax.swing.JTextField txtTER;
     private javax.swing.JTextField txtTriceps;
     // End of variables declaration//GEN-END:variables
 }

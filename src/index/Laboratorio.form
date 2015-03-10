@@ -384,9 +384,23 @@
                   <Font name="Tahoma" size="18" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
+                  <StringArray count="16">
                     <StringItem index="0" value="Activo"/>
-                    <StringItem index="1" value="Sedentario"/>
+                    <StringItem index="1" value="Ballet"/>
+                    <StringItem index="2" value="Besibol o Softbol"/>
+                    <StringItem index="3" value="Basquetbol"/>
+                    <StringItem index="4" value="Fisicocontructivismo"/>
+                    <StringItem index="5" value="Ciclismo"/>
+                    <StringItem index="6" value="Gimnasia"/>
+                    <StringItem index="7" value="Futbol"/>
+                    <StringItem index="8" value="Nataci&#xf3;n"/>
+                    <StringItem index="9" value="Tenis"/>
+                    <StringItem index="10" value="Velocidad"/>
+                    <StringItem index="11" value="Medio fondo"/>
+                    <StringItem index="12" value="Fondo"/>
+                    <StringItem index="13" value="Triatl&#xf3;n"/>
+                    <StringItem index="14" value="Voleibol"/>
+                    <StringItem index="15" value="Lucha"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -827,24 +841,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel31" pref="100" max="32767" attributes="0"/>
-                          <Component id="txtIMC" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel32" pref="100" max="32767" attributes="0"/>
-                          <Component id="txtCC" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel33" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="txtTER" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel34" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -908,32 +904,48 @@
                       </Group>
                       <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnSloan" alignment="1" min="-2" pref="305" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="btnSloanBurtBlyth" min="-2" pref="305" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="btnThorlandJohnson" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
-                                  <Component id="btnDurninWomersley" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnSloan" alignment="1" min="-2" pref="305" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="btnSloanBurtBlyth" min="-2" pref="305" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="btnThorlandJohnson" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
+                                          <Component id="btnDurninWomersley" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnPolloclkLaughridge" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnJacksonPollock" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnLewisHaskell" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnKatchMcArdle" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnWilmoreBehnke" max="32767" attributes="0"/>
+                                  <Component id="btnWithersCraig" alignment="0" pref="305" max="32767" attributes="0"/>
+                                  <Component id="btnJacksonAndPollock" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="369" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel31" max="32767" attributes="0"/>
+                                  <Component id="txtIMC" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel32" max="32767" attributes="0"/>
+                                  <Component id="txtCC" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnPolloclkLaughridge" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnJacksonPollock" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnLewisHaskell" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnKatchMcArdle" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnWilmoreBehnke" max="32767" attributes="0"/>
-                          <Component id="btnWithersCraig" alignment="0" pref="305" max="32767" attributes="0"/>
-                          <Component id="btnJacksonAndPollock" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace min="65" pref="70" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -946,15 +958,11 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel31" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel32" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel33" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtIMC" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="txtCC" alignment="3" max="32767" attributes="0"/>
-                              <Component id="txtTER" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtIMC" pref="30" max="32767" attributes="0"/>
+                          <Component id="txtCC" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
@@ -1060,15 +1068,6 @@
                 <Property name="text" type="java.lang.String" value="CC cm"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel33">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="TER mm"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="txtIMC">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1089,17 +1088,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCCActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtTER">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="18" style="0"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTERActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel34">
@@ -1438,6 +1426,11 @@
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnExportarWord" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1523,7 +1516,9 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="btnExportarWord" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1759,6 +1754,17 @@
                   <Font name="Arial" size="18" style="0"/>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnExportarWord">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="16" style="0"/>
+                </Property>
+                <Property name="label" type="java.lang.String" value="Exportar a Word"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportarWordActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
