@@ -1934,7 +1934,7 @@ public class Laboratorio extends javax.swing.JDialog {
         try {
             ExportToWord.exportation(paciente);
             JOptionPane.showMessageDialog(rootPane, "Exportación a Word completada, presione Aceptar para ver su archivo");
-            Process p = Runtime.getRuntime().exec("explorer.exe C:\\Workspaces\\Kinansport");
+            Process p = Runtime.getRuntime().exec("explorer.exe C:\\Workspaces\\Kinansport\\" + paciente.getNombre());
             p.waitFor();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, "Error en la exportación: " + ex.getMessage());

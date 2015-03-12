@@ -1,7 +1,6 @@
 package poi;
 
-import poi.Paciente;
-
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -192,8 +191,25 @@ public class ExportToWord {
             table3.getRow(2).getCell(2).setText(paciente.getEndomorfiaRCD());
             table3.getRow(3).getCell(2).setText(paciente.getMesomorfiaRCD());
             table3.getRow(4).getCell(2).setText(paciente.getEctomorfiaRCD());
+            
+            XWPFParagraph p5 = doc.createParagraph();
+            XWPFRun r5 = p5.createRun();
+            
+            File theDir = new File(paciente.getNombre());
+
+            // if the directory does not exist, create it
+            if (!theDir.exists()) {
+                  theDir.mkdir();
+            }
+            
+            new GraficaPastel(paciente.getNombre(), paciente.getPorcentajeGrasaReal(), 
+                              paciente.getPorcentajeMusculoReal(), paciente.getPorcentajeOseoReal(), 
+                              paciente.getPorcentajeResidualReal() );
+            
+            format = XWPFDocument.PICTURE_TYPE_PNG;
+            r5.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_pastel.png"), format, "grasa", Units.toEMU(300), Units.toEMU(300));
                         
-            FileOutputStream out = new FileOutputStream(paciente.getNombre() + ".docx");
+            FileOutputStream out = new FileOutputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + ".docx");
             doc.write(out);
             out.close();
         } catch (Exception ex) {
