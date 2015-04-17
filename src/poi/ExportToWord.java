@@ -119,7 +119,7 @@ public class ExportToWord {
             r4.addCarriageReturn();
             
             format = XWPFDocument.PICTURE_TYPE_PNG;
-            String imgICC = "src/images/Ginecoide.png";
+            String imgICC = "src/images/" + paciente.getIcc() + ".png";
             
             r4.addPicture(new FileInputStream(imgICC), format, imgICC, Units.toEMU(50), Units.toEMU(120));
             r4.addCarriageReturn();
@@ -132,10 +132,16 @@ public class ExportToWord {
             cellRow1.getCTTc().addNewTcPr();
             cellRow1.getCTTc().getTcPr().addNewGridSpan();
             cellRow1.getCTTc().getTcPr().getGridSpan().setVal(BigInteger.valueOf(2L));
+            
+            cellRow1 = table.getRow(0).getCell(1);
+            cellRow1.getCTTc().newCursor().removeXml();
 
             cellRow2.getCTTc().addNewTcPr();
             cellRow2.getCTTc().getTcPr().addNewGridSpan();
             cellRow2.getCTTc().getTcPr().getGridSpan().setVal(BigInteger.valueOf(2L));
+            
+            cellRow1 = table.getRow(1).getCell(1);
+            cellRow1.getCTTc().newCursor().removeXml();
             
             table.getRow(0).getCell(0).setText("Real");
             table.getRow(1).getCell(0).setText("Kg. Masa Magra: " + paciente.getMasaMagra());
@@ -177,6 +183,11 @@ public class ExportToWord {
             cellRow.getCTTc().getTcPr().addNewGridSpan();
             cellRow.getCTTc().getTcPr().getGridSpan().setVal(BigInteger.valueOf(3L));
             
+            cellRow = table3.getRow(0).getCell(2);
+            cellRow.getCTTc().newCursor().removeXml();
+            cellRow = table3.getRow(0).getCell(1);
+            cellRow.getCTTc().newCursor().removeXml();
+            
             table3.getRow(0).getCell(0).setText("Complexión\t");
             table3.getRow(2).getCell(0).setText("Endomorfia");
             table3.getRow(3).getCell(0).setText("Mesomorfia");
@@ -207,8 +218,14 @@ public class ExportToWord {
                               paciente.getPorcentajeResidualReal() );
             
             format = XWPFDocument.PICTURE_TYPE_PNG;
-            r5.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_pastel.png"), format, "grasa", Units.toEMU(300), Units.toEMU(300));
-                        
+            r5.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_pastel.png"), format, "Grasa", Units.toEMU(400), Units.toEMU(400));
+            
+            new GraficaXY(paciente.getNombre(), paciente.getEndomorfia(), paciente.getMesomorfia(), 
+                            paciente.getEctomorfia(), paciente.getEndomorfiaRCD(), paciente.getMesomorfiaRCD(), 
+                            paciente.getEctomorfiaRCD());
+            
+            r5.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_somatograma.png"), format, "Somatograma", Units.toEMU(465), Units.toEMU(462));
+            
             FileOutputStream out = new FileOutputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + ".docx");
             doc.write(out);
             out.close();
