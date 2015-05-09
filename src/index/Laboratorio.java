@@ -1932,10 +1932,15 @@ public class Laboratorio extends javax.swing.JDialog {
         paciente.setTriceps(txtTriceps.getText());
         
         try {
-            ExportToWord.exportation(paciente);
-            JOptionPane.showMessageDialog(rootPane, "Exportación a Word completada, presione Aceptar para ver su archivo");
-            Process p = Runtime.getRuntime().exec("explorer.exe C:\\Workspaces\\Kinansport\\" + paciente.getNombre());
-            p.waitFor();
+            if(!txtEctomorfiaRCD.getText().isEmpty() || !txtEndomorfiaRCD.getText().isEmpty() || !txtMesomorfiaRCD.getText().isEmpty()){
+                ExportToWord.exportation(paciente);
+                JOptionPane.showMessageDialog(rootPane, "Exportación a Word completada, presione Aceptar para ver su archivo");
+                Process p = Runtime.getRuntime().exec("explorer.exe C:\\Workspaces\\Kinansport\\" + paciente.getNombre());
+                p.waitFor();
+            }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Necesita introducir los datos de somatotipo recomendados antes de exportar a Word");
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, "Error en la exportación: " + ex.getMessage());
             Logger.getLogger(Laboratorio.class.getName()).log(Level.SEVERE, null, ex);

@@ -2,7 +2,6 @@ package poi;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
@@ -17,26 +16,16 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.STMerge;
 public class VerticalMerge {
     public static void main(String[] args) {
 
-        int rows = 7;
-        int cols = 2;
+        int rows = 5;
+        int cols = 5;
 
         XWPFDocument document = new XWPFDocument();
         XWPFTable table = document.createTable(rows, cols);
-        
-        XWPFTableCell cellRow1 = table.getRow(0).getCell(0);
-        XWPFTableCell cellRow2 = table.getRow(1).getCell(0);
 
-        cellRow1.getCTTc().addNewTcPr();
-        cellRow1.getCTTc().getTcPr().addNewGridSpan();
-        cellRow1.getCTTc().getTcPr().getGridSpan().setVal(BigInteger.valueOf(2L));
-        
-        cellRow2.getCTTc().addNewTcPr();
-        cellRow2.getCTTc().getTcPr().addNewGridSpan();
-        cellRow2.getCTTc().getTcPr().getGridSpan().setVal(BigInteger.valueOf(2L));
-        
-        
-        
-        
+        fillTable(table);
+
+        mergeCellsVertically(table, 3, 1, 3);
+
         try {
             FileOutputStream out = new FileOutputStream("vertical merge.docx");
             document.write(out);

@@ -2,20 +2,11 @@ package poi;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.math.BigInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.poi.util.Units;
-import org.apache.poi.xwpf.usermodel.Borders;
-import org.apache.poi.xwpf.usermodel.BreakClear;
-import org.apache.poi.xwpf.usermodel.BreakType;
-import org.apache.poi.xwpf.usermodel.LineSpacingRule;
-import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
-import org.apache.poi.xwpf.usermodel.TextAlignment;
-import org.apache.poi.xwpf.usermodel.UnderlinePatterns;
-import org.apache.poi.xwpf.usermodel.VerticalAlign;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -23,6 +14,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STMerge;
 
 /**
  * @author delamora
@@ -33,35 +25,43 @@ public class ExportToWord {
     public static void exportation(Paciente paciente) throws Exception {
     //public static void main(String[] args) throws Exception {
         try {
+            
+            File theDir = new File(paciente.getNombre());
+
+            // if the directory does not exist, create it
+            if (!theDir.exists()) {
+                  theDir.mkdir();
+            }
+            
             XWPFDocument doc = new XWPFDocument();
             XWPFParagraph p1 = doc.createParagraph();
             
             CTSectPr sectPr = doc.getDocument().getBody().addNewSectPr();//Márgenes del documento
             CTPageMar pageMar = sectPr.addNewPgMar();
             pageMar.setLeft(BigInteger.valueOf(1125L));
-            pageMar.setTop(BigInteger.valueOf(1150L));
+            pageMar.setTop(BigInteger.valueOf(1000L));
             pageMar.setRight(BigInteger.valueOf(1125L));
-            pageMar.setBottom(BigInteger.valueOf(1150L));
+            pageMar.setBottom(BigInteger.valueOf(1000L));
 
             XWPFRun r = p1.createRun();
             
             int format = XWPFDocument.PICTURE_TYPE_BMP;
             String imgEncabezado = "src/images/Encabezado.bmp";
             
-            r.addPicture(new FileInputStream(imgEncabezado), format, imgEncabezado, Units.toEMU(502), Units.toEMU(120)); 
+            r.addPicture(new FileInputStream(imgEncabezado), format, imgEncabezado, Units.toEMU(502), Units.toEMU(110)); 
                         
             r.setFontFamily("Andalus");
             r.setFontSize(12);
             r.setBold(false);
-            r.setText("Nombre: " + paciente.getNombre() + "\t");
+            r.setText("Nombre: " + paciente.getNombre() + "   ");
             String sexo = paciente.getSexo() ? "Masculino" : "Femenino";
             r.setText("Sexo: " + sexo);
             r.addCarriageReturn();
-            r.setText("Edad: " + paciente.getEdad() + "\t");
-            r.setText("Actividad física: " + paciente.getActividadFisica());
+            r.setText("Edad: " + paciente.getEdad() + "   ");
+            r.setText("Actividad física: " + paciente.getActividadFisica() + "   ");
             r.setText("Nivel: ");//preguntar a brenda
             r.addCarriageReturn();
-            r.setText("Peso: " + paciente.getPeso() + "\t");
+            r.setText("Peso: " + paciente.getPeso() + "   ");
             r.setText("Estatura: " + paciente.getEstatura());
             r.addCarriageReturn();
             
@@ -70,7 +70,7 @@ public class ExportToWord {
             r2.setFontFamily("Arial Rounded MT Bold");
             r2.setFontSize(13);
             r2.setBold(true);
-            r2.setText("Resultado de peso con estatura (IMC)");
+            r2.setText("Resultado de peso con estatura (IMC)            Complexión                       ICC");
             r2.addCarriageReturn();
             
             format = XWPFDocument.PICTURE_TYPE_PNG;
@@ -92,10 +92,20 @@ public class ExportToWord {
                 imgIMC = "src/images/IMC/IMC_obesidad3.png";
             }
             
-            r2.addPicture(new FileInputStream(imgIMC), format, imgIMC, Units.toEMU(240), Units.toEMU(114));
+            r2.addPicture(new FileInputStream(imgIMC), format, imgIMC, Units.toEMU(240), Units.toEMU(110));
+            r2.addTab();
+            
+            sexo = sexo.equals("Masculino") ? "Hombre" : "Mujer";
+            String imgComplexion = "src/images/Complexion/Complexion" + sexo + paciente.getComplexion() + ".png";
+            r2.addPicture(new FileInputStream(imgComplexion), format, imgComplexion, Units.toEMU(140), Units.toEMU(110));
+            r2.addTab();
+            
+            String imgICC = "src/images/" + paciente.getIcc() + ".png";
+            r2.addPicture(new FileInputStream(imgICC), format, imgICC, Units.toEMU(100), Units.toEMU(110));
+            
             r2.addCarriageReturn();
             
-            XWPFRun r3 = p1.createRun();
+            /*XWPFRun r3 = p1.createRun();
             
             r3.setFontFamily("Arial Rounded MT Bold");
             r3.setFontSize(13);
@@ -122,9 +132,16 @@ public class ExportToWord {
             String imgICC = "src/images/" + paciente.getIcc() + ".png";
             
             r4.addPicture(new FileInputStream(imgICC), format, imgICC, Units.toEMU(50), Units.toEMU(120));
-            r4.addCarriageReturn();
+            r4.addCarriageReturn();*/
             
-            XWPFTable table = doc.createTable(7, 2);
+            new GraficaPastel(paciente.getNombre(), paciente.getPorcentajeGrasaReal(), 
+                              paciente.getPorcentajeMusculoReal(), paciente.getPorcentajeOseoReal(), 
+                              paciente.getPorcentajeResidualReal() );
+            
+            format = XWPFDocument.PICTURE_TYPE_PNG;
+            r2.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_pastel.png"), format, "Grasa", Units.toEMU(180), Units.toEMU(180));
+                        
+            XWPFTable table = doc.createTable(7, 3);
         
             XWPFTableCell cellRow1 = table.getRow(0).getCell(0);
             XWPFTableCell cellRow2 = table.getRow(1).getCell(0);
@@ -133,15 +150,17 @@ public class ExportToWord {
             cellRow1.getCTTc().getTcPr().addNewGridSpan();
             cellRow1.getCTTc().getTcPr().getGridSpan().setVal(BigInteger.valueOf(2L));
             
-            cellRow1 = table.getRow(0).getCell(1);
+            cellRow1 = table.getRow(0).getCell(2);
             cellRow1.getCTTc().newCursor().removeXml();
 
             cellRow2.getCTTc().addNewTcPr();
             cellRow2.getCTTc().getTcPr().addNewGridSpan();
             cellRow2.getCTTc().getTcPr().getGridSpan().setVal(BigInteger.valueOf(2L));
             
-            cellRow1 = table.getRow(1).getCell(1);
+            cellRow1 = table.getRow(1).getCell(2);
             cellRow1.getCTTc().newCursor().removeXml();
+            
+            mergeCellsVertically(table, 1, 0, 1);
             
             table.getRow(0).getCell(0).setText("Real");
             table.getRow(1).getCell(0).setText("Kg. Masa Magra: " + paciente.getMasaMagra());
@@ -157,24 +176,23 @@ public class ExportToWord {
             table.getRow(5).getCell(1).setText("% Residual: " + paciente.getPorcentajeResidualReal());
             table.getRow(6).getCell(1).setText("% 100: ");
             
-            //r.addBreak(BreakType.TEXT_WRAPPING);
-            //r.addCarriageReturn();
-            //r.addBreak();
-        
-            XWPFParagraph p2 = doc.createParagraph();
-            p2.createRun();
+            table.getRow(0).getCell(1).setText("Recomendado");
+            table.getRow(0).getCell(1).setVerticalAlignment(XWPFTableCell.XWPFVertAlign.CENTER);
+            table.getRow(2).getCell(2).setText("% Grasa: " + paciente.getPorcentajeGrasaRCD());
+            table.getRow(3).getCell(2).setText("% Músculo: " + paciente.getPorcentajeMusculoRCD());
+            table.getRow(4).getCell(2).setText("% Óseo: " + paciente.getPorcentajeOseoRCD());
+            table.getRow(5).getCell(2).setText("% Residual: " + paciente.getPorcentajeResidualRCD());
             
-            XWPFTable table2 = doc.createTable(5, 1);
-            
-            table2.getRow(0).getCell(0).setText("Recomendado");
-            table2.getRow(1).getCell(0).setText("% Grasa: " + paciente.getPorcentajeGrasaRCD());
-            table2.getRow(2).getCell(0).setText("% Músculo: " + paciente.getPorcentajeMusculoRCD());
-            table2.getRow(3).getCell(0).setText("% Óseo: " + paciente.getPorcentajeOseoRCD());
-            table2.getRow(4).getCell(0).setText("% Residual: " + paciente.getPorcentajeResidualRCD());
             
             XWPFParagraph p3 = doc.createParagraph();
-            p3.createRun();
+            XWPFRun r3 = p3.createRun();
             
+            new GraficaXY(paciente.getNombre(), paciente.getEndomorfia(), paciente.getMesomorfia(), 
+                            paciente.getEctomorfia(), paciente.getEndomorfiaRCD(), paciente.getMesomorfiaRCD(), 
+                            paciente.getEctomorfiaRCD());
+            
+            r3.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_somatograma.png"), format, "Somatograma", Units.toEMU(180), Units.toEMU(180));
+                        
             XWPFTable table3 = doc.createTable(5, 3);
             
             XWPFTableCell cellRow = table3.getRow(0).getCell(0);
@@ -203,28 +221,29 @@ public class ExportToWord {
             table3.getRow(3).getCell(2).setText(paciente.getMesomorfiaRCD());
             table3.getRow(4).getCell(2).setText(paciente.getEctomorfiaRCD());
             
+            
+            
+            //XWPFParagraph p2 = doc.createParagraph();
+            //p2.createRun();
+            
+                        
+            /*XWPFTable table2 = doc.createTable(5, 1);
+            
+            table2.getRow(0).getCell(0).setText("Recomendado");
+            table2.getRow(1).getCell(0).setText("% Grasa: " + paciente.getPorcentajeGrasaRCD());
+            table2.getRow(2).getCell(0).setText("% Músculo: " + paciente.getPorcentajeMusculoRCD());
+            table2.getRow(3).getCell(0).setText("% Óseo: " + paciente.getPorcentajeOseoRCD());
+            table2.getRow(4).getCell(0).setText("% Residual: " + paciente.getPorcentajeResidualRCD());
+            
+            XWPFParagraph p3 = doc.createParagraph();
+            p3.createRun();
+            
+            
+            
             XWPFParagraph p5 = doc.createParagraph();
-            XWPFRun r5 = p5.createRun();
+            XWPFRun r5 = p5.createRun();*/
             
-            File theDir = new File(paciente.getNombre());
-
-            // if the directory does not exist, create it
-            if (!theDir.exists()) {
-                  theDir.mkdir();
-            }
             
-            new GraficaPastel(paciente.getNombre(), paciente.getPorcentajeGrasaReal(), 
-                              paciente.getPorcentajeMusculoReal(), paciente.getPorcentajeOseoReal(), 
-                              paciente.getPorcentajeResidualReal() );
-            
-            format = XWPFDocument.PICTURE_TYPE_PNG;
-            r5.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_pastel.png"), format, "Grasa", Units.toEMU(400), Units.toEMU(400));
-            
-            new GraficaXY(paciente.getNombre(), paciente.getEndomorfia(), paciente.getMesomorfia(), 
-                            paciente.getEctomorfia(), paciente.getEndomorfiaRCD(), paciente.getMesomorfiaRCD(), 
-                            paciente.getEctomorfiaRCD());
-            
-            r5.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_somatograma.png"), format, "Somatograma", Units.toEMU(465), Units.toEMU(462));
             
             FileOutputStream out = new FileOutputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + ".docx");
             doc.write(out);
@@ -234,5 +253,20 @@ public class ExportToWord {
         }
     }
 
+    private static void mergeCellsVertically(XWPFTable table, int col, int fromRow, int toRow) {
+
+        for (int rowIndex = fromRow; rowIndex <= toRow; rowIndex++) {
+
+            XWPFTableCell cell = table.getRow(rowIndex).getCell(col);
+
+            if ( rowIndex == fromRow ) {
+                // The first merged cell is set with RESTART merge value
+                cell.getCTTc().addNewTcPr().addNewVMerge().setVal(STMerge.RESTART);
+            } else {
+                // Cells which join (merge) the first one, are set with CONTINUE
+                cell.getCTTc().addNewTcPr().addNewVMerge().setVal(STMerge.CONTINUE);
+            }
+        }
+    }
         
 }
