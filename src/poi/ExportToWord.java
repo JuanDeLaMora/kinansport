@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.math.BigInteger;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.poi.util.Units;
@@ -14,7 +17,11 @@ import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTbl;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblPr;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STMerge;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 
 /**
  * @author delamora
@@ -39,9 +46,9 @@ public class ExportToWord {
             CTSectPr sectPr = doc.getDocument().getBody().addNewSectPr();//Márgenes del documento
             CTPageMar pageMar = sectPr.addNewPgMar();
             pageMar.setLeft(BigInteger.valueOf(1125L));
-            pageMar.setTop(BigInteger.valueOf(1000L));
+            pageMar.setTop(BigInteger.valueOf(700L));
             pageMar.setRight(BigInteger.valueOf(1125L));
-            pageMar.setBottom(BigInteger.valueOf(1000L));
+            pageMar.setBottom(BigInteger.valueOf(600L));
 
             XWPFRun r = p1.createRun();
             
@@ -54,12 +61,15 @@ public class ExportToWord {
             r.setFontSize(12);
             r.setBold(false);
             r.setText("Nombre: " + paciente.getNombre() + "   ");
-            String sexo = paciente.getSexo() ? "Masculino" : "Femenino";
+            String sexo = paciente.getSexo() ? "Masculino  " : "Femenino  ";
             r.setText("Sexo: " + sexo);
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm");
+            Date date = new Date();
+            r.setText(" Fecha: " + dateFormat.format(date));
             r.addCarriageReturn();
             r.setText("Edad: " + paciente.getEdad() + "   ");
             r.setText("Actividad física: " + paciente.getActividadFisica() + "   ");
-            r.setText("Nivel: ");//preguntar a brenda
+            r.setText("Nivel:");//preguntar a brenda
             r.addCarriageReturn();
             r.setText("Peso: " + paciente.getPeso() + "   ");
             r.setText("Estatura: " + paciente.getEstatura());
@@ -100,7 +110,9 @@ public class ExportToWord {
             r2.addPicture(new FileInputStream(imgComplexion), format, imgComplexion, Units.toEMU(140), Units.toEMU(110));
             r2.addTab();
             
-            String imgICC = "src/images/" + paciente.getIcc() + ".png";
+            format = XWPFDocument.PICTURE_TYPE_JPEG;
+            
+            String imgICC = "src/images/" + paciente.getIcc() + ".jpg";
             r2.addPicture(new FileInputStream(imgICC), format, imgICC, Units.toEMU(100), Units.toEMU(110));
             
             r2.addCarriageReturn();
@@ -140,9 +152,9 @@ public class ExportToWord {
             
             format = XWPFDocument.PICTURE_TYPE_PNG;
             r2.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_pastel.png"), format, "Grasa", Units.toEMU(180), Units.toEMU(180));
-                        
+            
             XWPFTable table = doc.createTable(7, 3);
-        
+            
             XWPFTableCell cellRow1 = table.getRow(0).getCell(0);
             XWPFTableCell cellRow2 = table.getRow(1).getCell(0);
 
@@ -182,8 +194,7 @@ public class ExportToWord {
             table.getRow(3).getCell(2).setText("% Músculo: " + paciente.getPorcentajeMusculoRCD());
             table.getRow(4).getCell(2).setText("% Óseo: " + paciente.getPorcentajeOseoRCD());
             table.getRow(5).getCell(2).setText("% Residual: " + paciente.getPorcentajeResidualRCD());
-            
-            
+                        
             XWPFParagraph p3 = doc.createParagraph();
             XWPFRun r3 = p3.createRun();
             
@@ -192,7 +203,7 @@ public class ExportToWord {
                             paciente.getEctomorfiaRCD());
             
             r3.addPicture(new FileInputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + "_somatograma.png"), format, "Somatograma", Units.toEMU(180), Units.toEMU(180));
-                        
+            
             XWPFTable table3 = doc.createTable(5, 3);
             
             XWPFTableCell cellRow = table3.getRow(0).getCell(0);
@@ -206,7 +217,7 @@ public class ExportToWord {
             cellRow = table3.getRow(0).getCell(1);
             cellRow.getCTTc().newCursor().removeXml();
             
-            table3.getRow(0).getCell(0).setText("Complexión\t");
+            table3.getRow(0).getCell(0).setText("Somatotipo\t");
             table3.getRow(2).getCell(0).setText("Endomorfia");
             table3.getRow(3).getCell(0).setText("Mesomorfia");
             table3.getRow(4).getCell(0).setText("Ectomorfia");
@@ -221,12 +232,23 @@ public class ExportToWord {
             table3.getRow(3).getCell(2).setText(paciente.getMesomorfiaRCD());
             table3.getRow(4).getCell(2).setText(paciente.getEctomorfiaRCD());
             
+            table3.setStyleID("Medium Shading 1");
             
+            XWPFParagraph p2 = doc.createParagraph();
+            p2.createRun();
             
-            //XWPFParagraph p2 = doc.createParagraph();
-            //p2.createRun();
+            XWPFTable table4 = doc.createTable(1, 1);
             
-                        
+            CTTbl commentTable = table4.getCTTbl();
+            CTTblPr pr = commentTable.getTblPr();
+            CTTblWidth tblW = pr.getTblW();
+            tblW.setW(BigInteger.valueOf(5000));
+            tblW.setType(STTblWidth.PCT);
+            pr.setTblW(tblW);
+            commentTable.setTblPr(pr);
+            
+            table4.getRow(0).getCell(0).setText("Comentarios:");
+               
             /*XWPFTable table2 = doc.createTable(5, 1);
             
             table2.getRow(0).getCell(0).setText("Recomendado");

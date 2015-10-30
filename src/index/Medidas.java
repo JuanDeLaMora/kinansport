@@ -8,13 +8,12 @@ package index;
  *
  * @author delamora
  */
-public class Medidas extends javax.swing.JDialog {
+public class Medidas extends javax.swing.JFrame {
 
     /**
      * Creates new form Medidas
      */
-    public Medidas(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public Medidas() {
         initComponents();
     }
 
@@ -27,21 +26,93 @@ public class Medidas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        btnInstrumentos = new javax.swing.JButton();
+        btnMetodologia = new javax.swing.JButton();
+        btnTecnica = new javax.swing.JButton();
+        btnVariables = new javax.swing.JButton();
+        btnErrores = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnInstrumentos.setText("Instrumentos de medición");
+        btnInstrumentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInstrumentosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnInstrumentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 190, 30));
+
+        btnMetodologia.setText("Metodología de la evalución ISAK");
+        btnMetodologia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMetodologiaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMetodologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, 30));
+
+        btnTecnica.setText("Técnica para llenado de proforma");
+        btnTecnica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTecnicaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, 30));
+
+        btnVariables.setText("Variables antropométricas");
+        btnVariables.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVariablesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVariables, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 180, 30));
+
+        btnErrores.setText("Errores en la medición");
+        btnErrores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnErroresActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnErrores, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Medidas");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 140, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo2 7x4.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMetodologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetodologiaActionPerformed
+        MedidasVideos ventana = new MedidasVideos();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnMetodologiaActionPerformed
+
+    private void btnTecnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTecnicaActionPerformed
+        MedidasVideosProforma ventana = new MedidasVideosProforma();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnTecnicaActionPerformed
+
+    private void btnErroresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnErroresActionPerformed
+        ErrorMedicion ventana = new ErrorMedicion();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnErroresActionPerformed
+
+    private void btnVariablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVariablesActionPerformed
+        VariablesAntropometricas ventana = new VariablesAntropometricas();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnVariablesActionPerformed
+
+    private void btnInstrumentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstrumentosActionPerformed
+        InstrumentosMedicion ventana = new InstrumentosMedicion();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnInstrumentosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,17 +144,17 @@ public class Medidas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Medidas dialog = new Medidas(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new Medidas().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnErrores;
+    private javax.swing.JButton btnInstrumentos;
+    private javax.swing.JButton btnMetodologia;
+    private javax.swing.JButton btnTecnica;
+    private javax.swing.JButton btnVariables;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

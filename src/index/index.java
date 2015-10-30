@@ -140,7 +140,7 @@ public class index extends javax.swing.JFrame {
         getContentPane().add(botonLaboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 270, -1));
 
         botonExamen.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        botonExamen.setText("Examen");
+        botonExamen.setText("Evaluación");
         botonExamen.setMaximumSize(new java.awt.Dimension(250, 33));
         botonExamen.setMinimumSize(new java.awt.Dimension(250, 33));
         botonExamen.setPreferredSize(new java.awt.Dimension(250, 33));
@@ -200,62 +200,62 @@ public class index extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAntecedentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAntecedentesActionPerformed
-        Antecedentes ventana = new Antecedentes(this, true);
+        Antecedentes ventana = new Antecedentes();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonAntecedentesActionPerformed
 
     private void botonGlosarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGlosarioActionPerformed
-        Glosario ventana = new Glosario(this, true);
+        Glosario ventana = new Glosario();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonGlosarioActionPerformed
 
     private void botonKinanappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonKinanappActionPerformed
-        Kinantropometria ventana = new Kinantropometria(this, true);
+        Kinantropometria ventana = new Kinantropometria();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonKinanappActionPerformed
 
     private void botonMedidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedidasActionPerformed
-        Medidas ventana = new Medidas(this, true);
+        Medidas ventana = new Medidas();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonMedidasActionPerformed
 
     private void botonSomatotipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSomatotipoActionPerformed
-        Somatotipo ventana = new Somatotipo(this, true);
+        Somatotipo ventana = new Somatotipo();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonSomatotipoActionPerformed
 
     private void botonProporcionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProporcionalidadActionPerformed
-        Proporcionalidad ventana = new Proporcionalidad(this, true);
+        Proporcionalidad ventana = new Proporcionalidad();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonProporcionalidadActionPerformed
 
     private void botonComposicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComposicionActionPerformed
-        Composicion ventana = new Composicion(this, true);
+        Composicion ventana = new Composicion();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonComposicionActionPerformed
 
     private void botonFormEcuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFormEcuActionPerformed
-        Formulas ventana = new Formulas(this, true);
+        Formulas ventana = new Formulas();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonFormEcuActionPerformed
 
     private void botonDescargasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDescargasActionPerformed
-        Descargas ventana = new Descargas(this, true);
+        Descargas ventana = new Descargas();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonDescargasActionPerformed
 
     private void botonLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLaboratorioActionPerformed
-        Laboratorio ventana = new Laboratorio(this, true);
+        Laboratorio ventana = new Laboratorio();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonLaboratorioActionPerformed
 
     private void botonExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonExamenActionPerformed
-        Examen ventana = new Examen(this, true);
+        Evaluacion ventana = new Evaluacion();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonExamenActionPerformed
 
     private void botonBibliCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBibliCreditosActionPerformed
-        Bibliografia ventana = new Bibliografia(this, true);
+        Bibliografia ventana = new Bibliografia();
         ventana.setVisible(true);
     }//GEN-LAST:event_botonBibliCreditosActionPerformed
 

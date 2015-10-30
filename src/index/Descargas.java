@@ -8,13 +8,12 @@ package index;
  *
  * @author delamora
  */
-public class Descargas extends javax.swing.JDialog {
+public class Descargas extends javax.swing.JFrame {
 
     /**
      * Creates new form Descargas
      */
-    public Descargas(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public Descargas() {
         initComponents();
     }
 
@@ -27,21 +26,102 @@ public class Descargas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        btnFormatoISAK = new javax.swing.JButton();
+        btnClasificacionSomatotipo = new javax.swing.JButton();
+        btnNomograma = new javax.swing.JButton();
+        btnProforma = new javax.swing.JButton();
+        btnSomatograma = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Descargas");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 29, 200, 40));
+
+        btnFormatoISAK.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnFormatoISAK.setText("Proforma de anotación");
+        btnFormatoISAK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFormatoISAKActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFormatoISAK, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 99, 197, 40));
+
+        btnClasificacionSomatotipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnClasificacionSomatotipo.setText("Clasificación de Somatotipo");
+        btnClasificacionSomatotipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClasificacionSomatotipoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnClasificacionSomatotipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 173, -1, 40));
+
+        btnNomograma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnNomograma.setText("Nomograma");
+        btnNomograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNomogramaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNomograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 246, 197, 40));
+
+        btnProforma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnProforma.setText("Proforma");
+        btnProforma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProformaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnProforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 127, 200, 40));
+
+        btnSomatograma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSomatograma.setText("Somatograma");
+        btnSomatograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSomatogramaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSomatograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 215, 200, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo1 6x4.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnProformaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProformaActionPerformed
+        try{
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\proforma.pdf");
+        } catch (Exception e){}
+    }//GEN-LAST:event_btnProformaActionPerformed
+
+    private void btnFormatoISAKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormatoISAKActionPerformed
+        try{
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\Formato ISAK.xls");
+        } catch (Exception e){}
+    }//GEN-LAST:event_btnFormatoISAKActionPerformed
+
+    private void btnClasificacionSomatotipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClasificacionSomatotipoActionPerformed
+        try{
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\clasificacion de somatotipo en somatocarta.pdf");
+        } catch (Exception e){}
+    }//GEN-LAST:event_btnClasificacionSomatotipoActionPerformed
+
+    private void btnNomogramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNomogramaActionPerformed
+        try{
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\nomograma.pdf");
+        } catch (Exception e){}
+    }//GEN-LAST:event_btnNomogramaActionPerformed
+
+    private void btnSomatogramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSomatogramaActionPerformed
+        try{
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\somatograma.pdf");
+        } catch (Exception e){}
+    }//GEN-LAST:event_btnSomatogramaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,17 +153,17 @@ public class Descargas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Descargas dialog = new Descargas(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new Descargas().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClasificacionSomatotipo;
+    private javax.swing.JButton btnFormatoISAK;
+    private javax.swing.JButton btnNomograma;
+    private javax.swing.JButton btnProforma;
+    private javax.swing.JButton btnSomatograma;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
