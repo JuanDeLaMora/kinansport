@@ -259,127 +259,127 @@ public class MedidasVideos extends javax.swing.JFrame {
 
     private void btnCaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaderaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Circunferencia cadera.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Circunferencia cadera.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnCaderaActionPerformed
 
     private void btnBrazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrazoActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Circunferencia de brazo.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Circunferencia de brazo.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnBrazoActionPerformed
 
     private void btnCircunferenciaPantorrillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCircunferenciaPantorrillaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Circunferencia de pantorrilla.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Circunferencia de pantorrilla.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnCircunferenciaPantorrillaActionPerformed
 
     private void btnAbdomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbdomenActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Cirfunferencia de abdomen.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Cirfunferencia de abdomen.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnAbdomenActionPerformed
 
     private void btnBrazoContraidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrazoContraidoActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\cirfunferencia de brazo contraido.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\cirfunferencia de brazo contraido.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnBrazoContraidoActionPerformed
 
     private void btnCinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCinturaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\cirunferencia de cintura.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\cirunferencia de cintura.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnCinturaActionPerformed
 	
 	private void btnBiestiloideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBiestiloideoActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Diametro biestiloideo.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Diametro biestiloideo.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnBiestiloideoActionPerformed
 
     private void btnFemoralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemoralActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Diametro femoral.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Diametro femoral.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnFemoralActionPerformed
 
     private void btnHumeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHumeralActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Diametro humeral.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Diametro humeral.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnHumeralActionPerformed
 
     private void btnPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesoActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Peso.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Peso.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnPesoActionPerformed
 
     private void btnEstaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstaturaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Estatura.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Estatura.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnEstaturaActionPerformed
 
     private void btnTriciptalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriciptalActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue tricipital.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue tricipital.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnTriciptalActionPerformed
 
     private void btnSupraespinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupraespinalActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue supraespinal.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue supraespinal.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnSupraespinalActionPerformed
 
     private void btnSubescapularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubescapularActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue subescapular.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue subescapular.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnSubescapularActionPerformed
 
     private void btnPectoralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPectoralActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue pectoral.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue pectoral.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnPectoralActionPerformed
 
     private void btnMusloAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMusloAnteriorActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue muslo anterior.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue muslo anterior.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnMusloAnteriorActionPerformed
 
     private void btnPlieguePantorrillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlieguePantorrillaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue de pantorrilla.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue de pantorrilla.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnPlieguePantorrillaActionPerformed
 
     private void btnCrestaIliacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrestaIliacaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue cresta iliaca.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue cresta iliaca.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnCrestaIliacaActionPerformed
 
     private void btnBicepsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBicepsActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue biceps.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue biceps.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnBicepsActionPerformed
 
     private void btnAxilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAxilarActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue axilar.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue axilar.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnAxilarActionPerformed
 
     private void btnAbdominalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbdominalActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Pliegue abdominal.mp4");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Pliegue abdominal.mp4");
         } catch (Exception e){}
     }//GEN-LAST:event_btnAbdominalActionPerformed
 

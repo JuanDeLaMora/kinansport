@@ -86,7 +86,7 @@ public class ExportToWord {
             format = XWPFDocument.PICTURE_TYPE_PNG;
             
             double IMC = Double.valueOf(paciente.getImc());
-            String imgIMC = null;
+            String imgIMC;
             
             if (IMC < 18.5){
                 imgIMC = "src/images/IMC/IMC_infrapeso.png";
@@ -146,7 +146,7 @@ public class ExportToWord {
             r4.addPicture(new FileInputStream(imgICC), format, imgICC, Units.toEMU(50), Units.toEMU(120));
             r4.addCarriageReturn();*/
             
-            new GraficaPastel(paciente.getNombre(), paciente.getPorcentajeGrasaReal(), 
+            GraficaPastel.CreaGrafica(paciente.getNombre(), paciente.getPorcentajeGrasaReal(), 
                               paciente.getPorcentajeMusculoReal(), paciente.getPorcentajeOseoReal(), 
                               paciente.getPorcentajeResidualReal() );
             
@@ -270,6 +270,12 @@ public class ExportToWord {
             FileOutputStream out = new FileOutputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + ".docx");
             doc.write(out);
             out.close();
+            
+            File graficaPastel = new File(paciente.getNombre()+ "\\" + paciente.getNombre() + "_pastel.png");
+            graficaPastel.delete();
+            File graficaXY = new File(paciente.getNombre()+ "\\" + paciente.getNombre() + "_somatograma.png");
+            graficaXY.delete();
+                
         } catch (Exception ex) {
             Logger.getLogger(ExportToWord.class.getName()).log(Level.SEVERE, null, ex);
         }

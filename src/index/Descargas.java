@@ -35,6 +35,7 @@ public class Descargas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -95,31 +96,31 @@ public class Descargas extends javax.swing.JFrame {
 
     private void btnProformaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProformaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\proforma.pdf");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\downloads\\proforma.pdf");
         } catch (Exception e){}
     }//GEN-LAST:event_btnProformaActionPerformed
 
     private void btnFormatoISAKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormatoISAKActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\Formato ISAK.xls");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\downloads\\Formato ISAK.xls");
         } catch (Exception e){}
     }//GEN-LAST:event_btnFormatoISAKActionPerformed
 
     private void btnClasificacionSomatotipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClasificacionSomatotipoActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\clasificacion de somatotipo en somatocarta.pdf");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\downloads\\clasificacion de somatotipo en somatocarta.pdf");
         } catch (Exception e){}
     }//GEN-LAST:event_btnClasificacionSomatotipoActionPerformed
 
     private void btnNomogramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNomogramaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\nomograma.pdf");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\downloads\\nomograma.pdf");
         } catch (Exception e){}
     }//GEN-LAST:event_btnNomogramaActionPerformed
 
     private void btnSomatogramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSomatogramaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\downloads\\somatograma.pdf");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\downloads\\somatograma.pdf");
         } catch (Exception e){}
     }//GEN-LAST:event_btnSomatogramaActionPerformed
 

@@ -37,10 +37,11 @@ public class Formulas extends javax.swing.JFrame {
         btnComplexion = new javax.swing.JButton();
         btnClasificacionSomatotipos = new javax.swing.JButton();
         btnPorcentajeGrasas = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnEscalaClasificacion = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -138,14 +139,14 @@ public class Formulas extends javax.swing.JFrame {
         });
         getContentPane().add(btnPorcentajeGrasas, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 200, 32));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Escala de Clasificación");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEscalaClasificacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnEscalaClasificacion.setText("Escala de Clasificación");
+        btnEscalaClasificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEscalaClasificacionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 32));
+        getContentPane().add(btnEscalaClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 200, 32));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo2 7x4.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 394));
@@ -154,70 +155,59 @@ public class Formulas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnICCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnICCActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\indice cintura cadera2.jpg");
-        } catch (Exception e){}
+        FormulaICC ventana = new FormulaICC();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnICCActionPerformed
 
     private void btnFormulaDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormulaDCActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\Formulas de DC3.jpg");
-        } catch (Exception e){}
+        FormulaDC3 ventana = new FormulaDC3();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnFormulaDCActionPerformed
 
     private void btnFormulaGCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormulaGCActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\formula %GC4.jpg");
-        } catch (Exception e){}
+        FormulaGC4 ventana = new FormulaGC4();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnFormulaGCActionPerformed
 
     private void btnSomatotipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSomatotipoActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\somatotipo 5.jpg");
-        } catch (Exception e){}
+        FormulaSomatotipo ventana = new FormulaSomatotipo();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnSomatotipoActionPerformed
 
     private void btnComposicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComposicionActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\Composicion corporal7.jpg");
-        } catch (Exception e){}
+        FormulaComposicion ventana = new FormulaComposicion();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnComposicionActionPerformed
 
     private void btnSomatogramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSomatogramaActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\Somatograma8.jpg");
-        } catch (Exception e){}
+        FormulaSomatograma ventana = new FormulaSomatograma();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnSomatogramaActionPerformed
 
     private void btnValoresIMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValoresIMCActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\R 1 IMC.jpg");
-        } catch (Exception e){}
+        FormulaIMC ventana = new FormulaIMC();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnValoresIMCActionPerformed
 
     private void btnComplexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplexionActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\R2 complexion.jpg");
-        } catch (Exception e){}
+        FormulaComplexion ventana = new FormulaComplexion();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnComplexionActionPerformed
 
     private void btnPorcentajeGrasasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentajeGrasasActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\R4 Porcentaje ideal de grasas.jpg");
-        } catch (Exception e){}
+        FormulaPorcentajeIdeal ventana = new FormulaPorcentajeIdeal();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnPorcentajeGrasasActionPerformed
 
     private void btnClasificacionSomatotiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClasificacionSomatotiposActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\R3 clasificacion de somatotipos.jpg");
-        } catch (Exception e){}
+        FormulaClasificacionSomatotipo ventana = new FormulaClasificacionSomatotipo();
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnClasificacionSomatotiposActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "src\\images\\formulas\\Escala de clasificacion de somatotipo.jpg");
-        } catch (Exception e){}
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnEscalaClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscalaClasificacionActionPerformed
+        FormulaEscalaSomatotipo ventana = new FormulaEscalaSomatotipo();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnEscalaClasificacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +247,7 @@ public class Formulas extends javax.swing.JFrame {
     private javax.swing.JButton btnClasificacionSomatotipos;
     private javax.swing.JButton btnComplexion;
     private javax.swing.JButton btnComposicion;
+    private javax.swing.JButton btnEscalaClasificacion;
     private javax.swing.JButton btnFormulaDC;
     private javax.swing.JButton btnFormulaGC;
     private javax.swing.JButton btnICC;
@@ -264,7 +255,6 @@ public class Formulas extends javax.swing.JFrame {
     private javax.swing.JButton btnSomatograma;
     private javax.swing.JButton btnSomatotipo;
     private javax.swing.JButton btnValoresIMC;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

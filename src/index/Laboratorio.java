@@ -1,7 +1,6 @@
 package index;
 
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -161,6 +160,7 @@ public class Laboratorio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1200, 600));
         setPreferredSize(new java.awt.Dimension(1220, 600));
+        setResizable(false);
 
         tpDatosPersonales.setFont(new java.awt.Font("Lucida Console", 1, 18)); // NOI18N
         tpDatosPersonales.setMaximumSize(new java.awt.Dimension(1200, 600));
@@ -1673,11 +1673,7 @@ public class Laboratorio extends javax.swing.JFrame {
             if(!txtEctomorfiaRCD.getText().isEmpty() || !txtEndomorfiaRCD.getText().isEmpty() || !txtMesomorfiaRCD.getText().isEmpty()){
                 ExportToWord.exportation(paciente);
                 JOptionPane.showMessageDialog(rootPane, "Exportación a Word completada, presione Aceptar para ver su archivo");
-                File graficaPastel = new File(paciente.getNombre()+ "\\" + paciente.getNombre() + "_pastel.png");
-                graficaPastel.delete();
-                File graficaXY = new File(paciente.getNombre()+ "\\" + paciente.getNombre() + "_somatograma.png");
-                graficaXY.delete();
-                Process p = Runtime.getRuntime().exec("explorer.exe C:\\Workspaces\\Kinansport\\" + paciente.getNombre());//<-- cambiar esta linea para abrir la ventana
+                Process p = Runtime.getRuntime().exec("explorer.exe " + paciente.getNombre());
                 p.waitFor();
             }
             else{

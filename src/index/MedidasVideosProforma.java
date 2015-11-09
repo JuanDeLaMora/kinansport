@@ -33,6 +33,7 @@ public class MedidasVideosProforma extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnEctomorfia.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -74,19 +75,19 @@ public class MedidasVideosProforma extends javax.swing.JFrame {
 
     private void btnEctomorfiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEctomorfiaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Ectomorfia.wmv");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Ectomorfia.wmv");
         } catch (Exception e){}
     }//GEN-LAST:event_btnEctomorfiaActionPerformed
 
     private void btnEndomorfiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndomorfiaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\Endomorfia.wmv");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\Endomorfia.wmv");
         } catch (Exception e){}
     }//GEN-LAST:event_btnEndomorfiaActionPerformed
 
     private void btnMesomorfiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesomorfiaActionPerformed
         try{
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\videos\\mesomorfia.wmv");
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "resources\\videos\\mesomorfia.wmv");
         } catch (Exception e){}
     }//GEN-LAST:event_btnMesomorfiaActionPerformed
 

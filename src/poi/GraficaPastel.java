@@ -14,7 +14,7 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public class GraficaPastel {
 
-    public GraficaPastel(String nombre, String grasa, String muscular, String oseo, String residual) throws IOException{
+    public static void CreaGrafica(String nombre, String grasa, String muscular, String oseo, String residual) throws IOException{
         // Fuente de Datos
         DefaultPieDataset data = new DefaultPieDataset();
         data.setValue(grasa + "% Grasa", Double.valueOf(grasa));
