@@ -3,6 +3,7 @@ package poi;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -52,10 +53,11 @@ public class ExportToWord {
 
             XWPFRun r = p1.createRun();
             
-            int format = XWPFDocument.PICTURE_TYPE_BMP;
-            String imgEncabezado = "src/images/Encabezado.bmp";
+            int format = XWPFDocument.PICTURE_TYPE_JPEG;
             
-            r.addPicture(new FileInputStream(imgEncabezado), format, imgEncabezado, Units.toEMU(502), Units.toEMU(110)); 
+            InputStream encabezado = InputStream.class.getResourceAsStream(("/images/Encabezado.jpg"));
+            
+            r.addPicture(encabezado, format, "Encabezado.jpg", Units.toEMU(502), Units.toEMU(110)); 
                         
             r.setFontFamily("Andalus");
             r.setFontSize(12);
@@ -89,62 +91,37 @@ public class ExportToWord {
             String imgIMC;
             
             if (IMC < 18.5){
-                imgIMC = "src/images/IMC/IMC_infrapeso.png";
+                imgIMC = "/images/IMC/IMC_infrapeso.png";
             } else if (IMC < 25){
-                imgIMC = "src/images/IMC/IMC_normal.png";
+                imgIMC = "/images/IMC/IMC_normal.png";
             } else if (IMC < 30){
-                imgIMC = "src/images/IMC/IMC_sobrepeso.png";
+                imgIMC = "/images/IMC/IMC_sobrepeso.png";
             } else if (IMC < 35){
-                imgIMC = "src/images/IMC/IMC_obesidad.png";
+                imgIMC = "/images/IMC/IMC_obesidad.png";
             } else if (IMC < 40){
-                imgIMC = "src/images/IMC/IMC_obesidad2.png";
+                imgIMC = "/images/IMC/IMC_obesidad2.png";
             } else {
-                imgIMC = "src/images/IMC/IMC_obesidad3.png";
+                imgIMC = "/images/IMC/IMC_obesidad3.png";
             }
             
-            r2.addPicture(new FileInputStream(imgIMC), format, imgIMC, Units.toEMU(240), Units.toEMU(110));
+            InputStream imagenIMC = InputStream.class.getResourceAsStream((imgIMC));
+            
+            r2.addPicture(imagenIMC, format, "IMC", Units.toEMU(240), Units.toEMU(110));
             r2.addTab();
             
             sexo = sexo.equals("Masculino") ? "Hombre" : "Mujer";
-            String imgComplexion = "src/images/Complexion/Complexion" + sexo + paciente.getComplexion() + ".png";
-            r2.addPicture(new FileInputStream(imgComplexion), format, imgComplexion, Units.toEMU(140), Units.toEMU(110));
+            String imgComplexion = "/images/Complexion/Complexion" + sexo + paciente.getComplexion() + ".png";
+            InputStream imagenComplexion = InputStream.class.getResourceAsStream((imgComplexion));
+            r2.addPicture(imagenComplexion, format, "Complexion", Units.toEMU(140), Units.toEMU(110));
             r2.addTab();
             
             format = XWPFDocument.PICTURE_TYPE_JPEG;
             
-            String imgICC = "src/images/" + paciente.getIcc() + ".jpg";
-            r2.addPicture(new FileInputStream(imgICC), format, imgICC, Units.toEMU(100), Units.toEMU(110));
+            String imgICC = "/images/" + paciente.getIcc() + ".jpg";
+            InputStream imagenICC = InputStream.class.getResourceAsStream((imgICC));
+            r2.addPicture(imagenICC, format, "ICC", Units.toEMU(100), Units.toEMU(110));
             
             r2.addCarriageReturn();
-            
-            /*XWPFRun r3 = p1.createRun();
-            
-            r3.setFontFamily("Arial Rounded MT Bold");
-            r3.setFontSize(13);
-            r3.setBold(true);
-            r3.setText("Complexión");
-            r3.addCarriageReturn();
-            
-            format = XWPFDocument.PICTURE_TYPE_PNG;
-            sexo = sexo.equals("Masculino") ? "Hombre" : "Mujer";
-            String imgComplexion = "src/images/Complexion/Complexion" + sexo + paciente.getComplexion() + ".png";
-            
-            r3.addPicture(new FileInputStream(imgComplexion), format, imgComplexion, Units.toEMU(56), Units.toEMU(122));
-            r3.addCarriageReturn();
-            
-            XWPFRun r4 = p1.createRun();
-            
-            r4.setFontFamily("Arial Rounded MT Bold");
-            r4.setFontSize(13);
-            r4.setBold(true);
-            r4.setText("ICC");
-            r4.addCarriageReturn();
-            
-            format = XWPFDocument.PICTURE_TYPE_PNG;
-            String imgICC = "src/images/" + paciente.getIcc() + ".png";
-            
-            r4.addPicture(new FileInputStream(imgICC), format, imgICC, Units.toEMU(50), Units.toEMU(120));
-            r4.addCarriageReturn();*/
             
             GraficaPastel.CreaGrafica(paciente.getNombre(), paciente.getPorcentajeGrasaReal(), 
                               paciente.getPorcentajeMusculoReal(), paciente.getPorcentajeOseoReal(), 
@@ -249,24 +226,6 @@ public class ExportToWord {
             
             table4.getRow(0).getCell(0).setText("Comentarios:");
                
-            /*XWPFTable table2 = doc.createTable(5, 1);
-            
-            table2.getRow(0).getCell(0).setText("Recomendado");
-            table2.getRow(1).getCell(0).setText("% Grasa: " + paciente.getPorcentajeGrasaRCD());
-            table2.getRow(2).getCell(0).setText("% Músculo: " + paciente.getPorcentajeMusculoRCD());
-            table2.getRow(3).getCell(0).setText("% Óseo: " + paciente.getPorcentajeOseoRCD());
-            table2.getRow(4).getCell(0).setText("% Residual: " + paciente.getPorcentajeResidualRCD());
-            
-            XWPFParagraph p3 = doc.createParagraph();
-            p3.createRun();
-            
-            
-            
-            XWPFParagraph p5 = doc.createParagraph();
-            XWPFRun r5 = p5.createRun();*/
-            
-            
-            
             FileOutputStream out = new FileOutputStream(paciente.getNombre()+ "\\" + paciente.getNombre() + ".docx");
             doc.write(out);
             out.close();

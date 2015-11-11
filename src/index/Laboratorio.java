@@ -890,14 +890,44 @@ public class Laboratorio extends javax.swing.JFrame {
                 txtFemur.getText().isEmpty() ) {
             JOptionPane.showMessageDialog(rootPane, "Necesita introducir todos los datos en la pestaña de \"Datos Personales\"");
         } else {
-            txtIMCActionPerformed(null);
-            txtCCActionPerformed(null);
-            txtEndomorfiaActionPerformed(null);
-            txtMesomorfiaActionPerformed(null);
-            txtEctomorfiaActionPerformed(null);
-            txtClasificacionActionPerformed(null);
-            txtICCActionPerformed(null);
-            txtComplexionActionPerformed(null);
+            try{
+                
+                Double.parseDouble(txtEdad.getText());
+                Double.parseDouble(txtPeso.getText());
+                Double.parseDouble(txtEstatura.getText());
+                Double.parseDouble(txtTriceps.getText());
+                Double.parseDouble(txtSubescapular.getText());
+                Double.parseDouble(txtBiceps.getText());
+                Double.parseDouble(txtPectoral.getText());
+                Double.parseDouble(txtAxilar.getText());
+                Double.parseDouble(txtCrestaIliaca.getText()); 
+                Double.parseDouble(txtSupraespinal.getText());
+                Double.parseDouble(txtAbdominal.getText());
+                Double.parseDouble(txtMusloFrontal.getText());
+                Double.parseDouble(txtPantorrillaMedial.getText());
+
+                Double.parseDouble(txtBrazoRelajado.getText());
+                Double.parseDouble(txtBrazoContraido.getText());
+                Double.parseDouble(txtCintura.getText());
+                Double.parseDouble(txtAbdomen.getText());
+                Double.parseDouble(txtCadera.getText());
+                Double.parseDouble(txtPantorrilla.getText());
+                Double.parseDouble(txtHumero.getText());
+                Double.parseDouble(txtEstiloideo.getText());
+                Double.parseDouble(txtFemur.getText());
+                
+                txtIMCActionPerformed(null);
+                txtCCActionPerformed(null);
+                txtEndomorfiaActionPerformed(null);
+                txtMesomorfiaActionPerformed(null);
+                txtEctomorfiaActionPerformed(null);
+                txtClasificacionActionPerformed(null);
+                txtICCActionPerformed(null);
+                txtComplexionActionPerformed(null);
+                
+            } catch (NumberFormatException nfe){
+                JOptionPane.showMessageDialog(rootPane, "Los datos numéricos en la pestaña de \"Datos Personales\" han sido mal capturados, solo se aceptan números y puntos decimales");
+            }
         }
     }//GEN-LAST:event_panelMedicionesComponentShown
 	
@@ -1178,6 +1208,8 @@ public class Laboratorio extends javax.swing.JFrame {
         double gcWB = 0;
         double gcJ = 0;
         double gcWCBN = 0;
+        
+        btnExportarWord.setEnabled(true);
         
         txtMasaMagra.setEditable(false);
         txtKgGrasa.setEditable(false);
@@ -1468,22 +1500,37 @@ public class Laboratorio extends javax.swing.JFrame {
         double kiloMusculo = (peso * porcentajeMusculo) / 100;
         double kiloResidual = (peso * porcentajeResidual)/100;
         
-        DecimalFormat df = new DecimalFormat("#.#");
+        if (botonesSeleccionados > 0){
         
-        txtMasaMagra.setText(String.valueOf(df.format(masaMagra)));
-        txtKgGrasa.setText(String.valueOf(df.format(kiloGrasa)));
-        txtKgMusculo.setText(String.valueOf(df.format(kiloMusculo)));
-        txtKgOseo.setText(String.valueOf(df.format(kiloOseo)));
-        txtKgResidual.setText(String.valueOf(kiloResidual));
-        txtPorcentajeGrasaReal.setText(String.valueOf(df.format(porcentajeGrasaCorporal)));
-        txtPorcentajeMusculoReal.setText(String.valueOf(df.format(porcentajeMusculo)));
-        txtPorcentajeOseoReal.setText(String.valueOf(df.format(porcentajeOseo)));
-        txtPorcentajeResidualReal.setText(String.valueOf(df.format(porcentajeResidual)));
+            DecimalFormat df = new DecimalFormat("#.#");
+
+            txtMasaMagra.setText(String.valueOf(df.format(masaMagra)));
+            txtKgGrasa.setText(String.valueOf(df.format(kiloGrasa)));
+            txtKgMusculo.setText(String.valueOf(df.format(kiloMusculo)));
+            txtKgOseo.setText(String.valueOf(df.format(kiloOseo)));
+            txtKgResidual.setText(String.valueOf(kiloResidual));
+            txtPorcentajeGrasaReal.setText(String.valueOf(df.format(porcentajeGrasaCorporal)));
+            txtPorcentajeMusculoReal.setText(String.valueOf(df.format(porcentajeMusculo)));
+            txtPorcentajeOseoReal.setText(String.valueOf(df.format(porcentajeOseo)));
+            txtPorcentajeResidualReal.setText(String.valueOf(df.format(porcentajeResidual)));
         
-        //txtPorcentajeOseoRCD.setText(String.valueOf(df.format(porcentajeOseo)));
-        //txtPorcentajeResidualRCD.setText(String.valueOf(df.format(porcentajeResidual)));
-        
-        //txtPorcentajeGrasaRCD.setText(porcentajeGrasaRCD);
+        }
+        else{
+            
+            txtMasaMagra.setText("");
+            txtKgGrasa.setText("");
+            txtKgMusculo.setText("");
+            txtKgOseo.setText("");
+            txtKgResidual.setText("");
+            txtPorcentajeGrasaReal.setText("");
+            txtPorcentajeMusculoReal.setText("");
+            txtPorcentajeOseoReal.setText("");
+            txtPorcentajeResidualReal.setText("");
+            
+            String sexo = cbMasculino.isSelected() ? "Masculino" : "Femenino";
+            JOptionPane.showMessageDialog(rootPane, "Necesita seleccionar al menos un botón del género " + sexo + " de la pestaña \"Mediciones\"");
+            btnExportarWord.setEnabled(false);
+        }
         
     }//GEN-LAST:event_panelComposicionCorporalComponentShown
 
@@ -1669,19 +1716,30 @@ public class Laboratorio extends javax.swing.JFrame {
         paciente.setSupraespinal(txtSupraespinal.getText());
         paciente.setTriceps(txtTriceps.getText());
         
-        try {
-            if(!txtEctomorfiaRCD.getText().isEmpty() || !txtEndomorfiaRCD.getText().isEmpty() || !txtMesomorfiaRCD.getText().isEmpty()){
-                ExportToWord.exportation(paciente);
-                JOptionPane.showMessageDialog(rootPane, "Exportación a Word completada, presione Aceptar para ver su archivo");
-                Process p = Runtime.getRuntime().exec("explorer.exe " + paciente.getNombre());
-                p.waitFor();
+        if(!txtEctomorfiaRCD.getText().isEmpty() || !txtEndomorfiaRCD.getText().isEmpty() || !txtMesomorfiaRCD.getText().isEmpty()){
+        
+            try {
+                
+                Double.parseDouble(txtMesomorfiaRCD.getText());
+                Double.parseDouble(txtEndomorfiaRCD.getText());
+                Double.parseDouble(txtEctomorfiaRCD.getText());
+                
+                try{
+                    ExportToWord.exportation(paciente);
+                    JOptionPane.showMessageDialog(rootPane, "Exportación a Word completada, presione Aceptar para ver su archivo");
+                    Process p = Runtime.getRuntime().exec("explorer.exe " + paciente.getNombre());
+                    p.waitFor();
+                }
+                catch (Exception ex){
+                    JOptionPane.showMessageDialog(rootPane, "Error en la exportación: " + ex.getMessage());
+                Logger.getLogger(Laboratorio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(rootPane, "Los datos de somatotipo recomendados solo pueden ser numéricos y puntos decimales");
             }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Necesita introducir los datos de somatotipo recomendados antes de exportar a Word");
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, "Error en la exportación: " + ex.getMessage());
-            Logger.getLogger(Laboratorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Necesita introducir los datos de somatotipo recomendados antes de exportar a Word");
         }
         
     }//GEN-LAST:event_btnExportarWordActionPerformed

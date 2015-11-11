@@ -56,7 +56,7 @@ public class GraficaXY extends ApplicationFrame {
         renderer.setSeriesShapesVisible(2, false);
         renderer.setSeriesLinesVisible(3, false);
         renderer.setSeriesShapesVisible(3, false);
-        ImageIcon somatograma = new ImageIcon("src/images/somatograma.jpg");
+        ImageIcon somatograma = new ImageIcon(getClass().getResource("/images/somatograma.jpg"));
         plot.setBackgroundImage(somatograma.getImage());
         plot.setRenderer(renderer);
         final ChartPanel chartPanel = new ChartPanel(chart);
